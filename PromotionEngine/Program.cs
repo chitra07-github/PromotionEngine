@@ -18,9 +18,41 @@ namespace PromotionEngine
             {
                 Console.WriteLine("Enter the type of SKU: A,B,C or D");
                 char type = Convert.ToChar(Console.ReadLine());
+                Console.WriteLine("Enter the quantity for SKU: " + type);
+                int skucount = Convert.ToInt32(Console.ReadLine());
+                SKU sku = new SKU(type, skucount);
+                skus.Add(sku);
+                totalCost = GetTotalPrice(skus);
             }
+            Console.WriteLine("Total Order Cost is " + totalCost.ToString());
+            Console.ReadLine();
+
+        }
+        private static decimal GetTotalPrice(List<SKU> skudetails)
+        {
+            decimal skuAPrice = 50;
+            decimal skuBPrice = 30;
+            decimal skuCPrice = 20;
+            decimal skuDPrice = 15;
+            decimal orderPriceA = 0;
+            decimal orderPriceB = 0;
+            decimal orderPriceC = 0;
+            decimal orderPriceD = 0;
+
+            foreach (SKU sku in skudetails)
+            {
+                if (sku.SKUId == 'A')
+                {
+                    orderPriceA = (sku.SKUCount / 3) * 130 + (sku.SKUCount % 3 * skuAPrice);
+                }
+              
+            }
+
+            return orderPriceA + orderPriceB + orderPriceC + orderPriceD;
+
         }
     }
+}
     public class SKU
     {
         public char SKUId { get; set; }
