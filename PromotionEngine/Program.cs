@@ -22,8 +22,9 @@ namespace PromotionEngine
                 int skucount = Convert.ToInt32(Console.ReadLine());
                 SKU sku = new SKU(type, skucount);
                 skus.Add(sku);
-                totalCost = GetTotalPrice(skus);
+      
             }
+            totalCost = GetTotalPrice(skus);
             Console.WriteLine("Total Order Cost is " + totalCost.ToString());
             Console.ReadLine();
 
@@ -65,7 +66,7 @@ namespace PromotionEngine
             if (SKUCCount > 0 && SKUDCount > 0)
             {
                 orderPriceC = 0;
-                orderPriceD = (SKUCCount + SKUDCount / 2) * 30;
+                orderPriceD = (SKUCCount + SKUDCount / 2) * 30 ;
             }
             totalPrice = orderPriceA + orderPriceB + orderPriceC + orderPriceD;
             return totalPrice;
