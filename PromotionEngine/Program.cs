@@ -10,6 +10,9 @@ namespace PromotionEngine
     {
         static void Main(string[] args)
         {
+            List<SKU> skus = new List<SKU>();
+            Console.WriteLine("Enter the total number of order lines");
+            int total = Convert.ToInt32(Console.ReadLine());
         }
     }
     public class SKU
