@@ -45,7 +45,18 @@ namespace PromotionEngine
                 {
                     orderPriceA = (sku.SKUCount / 3) * 130 + (sku.SKUCount % 3 * skuAPrice);
                 }
-              
+                if (sku.SKUId == 'B')
+                {
+                    orderPriceB = (sku.SKUCount / 2) * 45 + (sku.SKUCount % 2 * skuBPrice);
+                }
+                if (sku.SKUId == 'C')
+                {
+                    orderPriceC = (sku.SKUCount) * skuCPrice;
+                }
+                if (sku.SKUId == 'D')
+                {
+                    orderPriceD = (sku.SKUCount) * skuCPrice;
+                }
             }
 
             return orderPriceA + orderPriceB + orderPriceC + orderPriceD;
