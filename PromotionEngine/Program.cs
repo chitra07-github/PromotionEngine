@@ -38,7 +38,9 @@ namespace PromotionEngine
             decimal orderPriceB = 0;
             decimal orderPriceC = 0;
             decimal orderPriceD = 0;
-
+            int SKUCCount = 0;
+            int SKUDCount = 0;
+            decimal totalPrice = 0;
             foreach (SKU sku in skudetails)
             {
                 if (sku.SKUId == 'A')
@@ -51,19 +53,25 @@ namespace PromotionEngine
                 }
                 if (sku.SKUId == 'C')
                 {
+                    SKUCCount = sku.SKUCount;
                     orderPriceC = (sku.SKUCount) * skuCPrice;
                 }
                 if (sku.SKUId == 'D')
                 {
+                    SKUDCount = sku.SKUCount;
                     orderPriceD = (sku.SKUCount) * skuCPrice;
                 }
             }
-
-            return orderPriceA + orderPriceB + orderPriceC + orderPriceD;
-
+            if (SKUCCount > 0 && SKUDCount > 0)
+            {
+                orderPriceC = 0;
+                orderPriceD = (SKUCCount + SKUDCount / 2) * 30;
+            }
+            totalPrice = orderPriceA + orderPriceB + orderPriceC + orderPriceD;
+            return totalPrice;
         }
     }
-}
+
     public class SKU
     {
         public char SKUId { get; set; }
